@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+RewriteRule ^(.+)$ shortn/index.php?code=$1 [QSA,L]

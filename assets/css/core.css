@@ -1,0 +1,54 @@
+body {
+    background-color: #16a085;
+}
+
+#headerTitle {
+    color: #ecf0f1;
+    display: inline;
+}
+
+#slur {
+    color: #ecf0f1;
+    font-size: 13pt;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+input, button {
+    border-style: solid;
+}
+
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+#statistics-panel {
+    width: 50%;
+    padding: 0;
+}
+
+#btnSubmit {
+    float: right;
+    height: 45px;
+}
+
+#inputUrl {
+    width: 100%;
+    height: 45px;
+    font-size: 14pt;
+}
+
+.inline-form {
+    overflow: hidden;
+    padding-right: .5em;
+}
+
+.alert {
+    width: 60%;
+    margin: auto;
+}
