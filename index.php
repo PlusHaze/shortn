@@ -82,8 +82,8 @@ if (isset($_GET["code"])) {
             </div>
         </div>
     </section>
-
 </div>
-</body>
+
 <script src="assets/js/main.js"></script>
+</body>
 </html>
