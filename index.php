@@ -8,9 +8,11 @@ if (isset($_GET["code"])) {
     require "api/mini/shortener.php";
 
     $sh = new UrlShortener();
-    $url = $sh->getUrlFromCode($_GET["code"]);
 
-    if ($url != null) {
+    $url = $sh->getUrlFromCode($_GET["code"]);
+    $host = str_replace("www.", "", $_SERVER['SERVER_NAME']);
+
+    if ($url != null && strpos($url, $host) === false) {
         header("location: " . $url);
     } else {
         header("location: /" . basename(__DIR__));

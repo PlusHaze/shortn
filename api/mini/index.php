@@ -14,15 +14,23 @@ $output = [
 ];
 
 if (filter_var($url, FILTER_VALIDATE_URL)) {
-    $output["success"] = true;
 
-    $sh = new UrlShortener();
+    $host = str_replace("www.", "", $_SERVER['SERVER_NAME']);
 
-    if ($sh->isUrlExists($url)) {
-        $output["code"] .= $sh->getExistingUrlCode($url);
+    if (strpos($url, $host) === false) {
+        $output["success"] = true;
+
+        $sh = new UrlShortener();
+
+        if ($sh->isUrlExists($url)) {
+            $output["code"] .= $sh->getExistingUrlCode($url);
+        } else {
+            $output["code"] .= $sh->shortenUrl($url);
+        }
     } else {
-        $output["code"] .= $sh->shortenUrl($url);
+        $output["message"] = "URl cannot be of the same server";
     }
+
 } else {
     $output["message"] = "Invalid URL supplied";
 }
