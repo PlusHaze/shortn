@@ -34,8 +34,8 @@ class UrlShortener
 
     public function getExistingUrlCode($url) {
         $stmt = $this->pdo->prepare("SELECT url_code FROM links WHERE url = ? LIMIT 1");
-        if ($stmt->execute([$url]) && $stmt->rowCount() == 1) {
-            return $stmt->fetch(PDO::FETCH_ASSOC)["url_code"];
+        if ($stmt->execute([$url]) && $result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            return $result["url_code"];
         }
 
         return null;
@@ -43,8 +43,8 @@ class UrlShortener
 
     public function getUrlFromCode($urlCode) {
         $stmt = $this->pdo->prepare("SELECT url FROM links WHERE url_code = ? LIMIT 1");
-        if ($stmt->execute([$urlCode]) && $stmt->rowCount() == 1) {
-            return $stmt->fetch(PDO::FETCH_ASSOC)["url"];
+        if ($stmt->execute([$urlCode]) && $result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            return $result["url"];
         }
 
         return null;
