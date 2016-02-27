@@ -1,5 +1,7 @@
 <?php
 
+use Shortener\Api\Report\UrlReport;
+
 require "../db/config.php";
 require "urlreport.php";
 

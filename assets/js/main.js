@@ -1,38 +1,6 @@
 $(function() {
+
     refreshStatistics();
-    initializeAlertEvents();
-});
-
-function refreshStatistics() {
-
-    $.get("api/stats/", function(response) {
-        var stats = $.parseJSON(response);
-
-        $("#totalShortened").html(stats["total_shortened"]);
-        $("#shortenedToday").html(stats["shortened_today"]);
-    });
-}
-
-function showAlert(alertId, message) {
-    var element = $(alertId);
-    element.html(message);
-
-    if (element.parent().hasClass("hidden")) {
-        element.parent().removeClass("hidden");
-    }
-
-    element.parent().fadeIn(1000);
-}
-
-function showSuccessAlert(message) {
-    showAlert("#txtSuccess", message);
-}
-
-function showErrorAlert(message) {
-    showAlert("#txtError", message);
-}
-
-function initializeAlertEvents() {
 
     $(".close").on("click", function(){
         $(this).parent().fadeOut(1000);
@@ -69,4 +37,33 @@ function initializeAlertEvents() {
             refreshStatistics();
         });
     });
+});
+
+function refreshStatistics() {
+
+    $.get("api/stats/", function(response) {
+        var stats = $.parseJSON(response);
+
+        $("#totalShortened").html(stats["total_shortened"]);
+        $("#shortenedToday").html(stats["shortened_today"]);
+    });
+}
+
+function showAlert(alertId, message) {
+    var element = $(alertId);
+    element.html(message);
+
+    if (element.parent().hasClass("hidden")) {
+        element.parent().removeClass("hidden");
+    }
+
+    element.parent().fadeIn(1000);
+}
+
+function showSuccessAlert(message) {
+    showAlert("#txtSuccess", message);
+}
+
+function showErrorAlert(message) {
+    showAlert("#txtError", message);
 }

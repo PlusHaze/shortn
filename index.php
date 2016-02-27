@@ -1,4 +1,7 @@
 <?php
+
+use Shortener\Api\Minify\UrlShortener;
+
 if (isset($_GET["code"])) {
 
     require "api/db/config.php";
@@ -9,6 +12,8 @@ if (isset($_GET["code"])) {
 
     if ($url != null) {
         header("location: " . $url);
+    } else {
+        header("location: /" . basename(__DIR__));
     }
 }
 ?>
@@ -16,15 +21,13 @@ if (isset($_GET["code"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/include/bootstrap/bootsrap.min.css">
+    <script src="assets/include/bootstrap/boostrap-3.3.6.js"></script>
+    <script src="assets/include/jquery/jquery-1.12.0.js"></script>
     <link rel="stylesheet" href="assets/css/core.css">
-
     <title>Shortn - URL Shortener</title>
 </head>
 <body>
-
 <div class="container">
 
     <div class="page-header">
@@ -54,7 +57,7 @@ if (isset($_GET["code"])) {
             <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <strong id="txtError">Hey</strong>
+            <strong id="txtError"></strong>
         </div>
         <br>
 

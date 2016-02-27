@@ -1,5 +1,7 @@
 <?php
 
+use Shortener\Api\Minify\UrlShortener;
+
 require "../db/config.php";
 require "shortener.php";
 

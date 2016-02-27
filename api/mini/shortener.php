@@ -1,7 +1,12 @@
 <?php
 
-class UrlShortener {
+namespace Shortener\Api\Minify;
 
+use PDO;
+use Shortener\Database\Config\Database;
+
+class UrlShortener
+{
     private $pdo;
 
     function __construct(){

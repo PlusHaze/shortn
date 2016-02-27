@@ -1,7 +1,12 @@
 <?php
 
-class UrlReport {
+namespace Shortener\Api\Report;
 
+use PDO;
+use Shortener\Database\Config\Database;
+
+class UrlReport
+{
     private $pdo;
 
     function __construct(){
