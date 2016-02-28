@@ -14,7 +14,7 @@ class UrlShortener
     }
 
     public function shortenUrl($url) {
-        $stmt = $this->pdo->prepare("INSERT INTO links(url, url_code, date_added) VALUES (?, ?, CURDATE());");
+        $stmt = $this->pdo->prepare("INSERT INTO links(url, url_code, date_added) VALUES (?, ?, CURDATE())");
         $hashedCode = strtoupper($this->hashUrl($url));
         return $stmt->execute([$url, $hashedCode]) ? $hashedCode : null;
     }
@@ -24,7 +24,7 @@ class UrlShortener
     }
 
     public function isUrlExists($url) {
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM links WHERE url = ?;");
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM links WHERE url = ?");
         if ($stmt->execute([$url])) {
             return intval($stmt->fetch(PDO::FETCH_ASSOC)["COUNT(*)"]) > 0;
         }
