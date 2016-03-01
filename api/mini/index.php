@@ -23,9 +23,9 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
         $sh = new UrlShortener();
 
         if ($sh->isUrlExists($url)) {
-            $output["code"] .= $sh->getExistingUrlCode($url);
+            $output["code"] = $sh->getExistingUrlCode($url);
         } else {
-            $output["code"] .= $sh->shortenUrl($url);
+            $output["code"] = $sh->shortenUrl($url);
         }
     } else {
         $output["message"] = "URl cannot be of the same server";
