@@ -10,7 +10,7 @@ if (isset($_GET["code"])) {
     $sh = new UrlShortener();
 
     $url = $sh->getUrlFromCode($_GET["code"]);
-    $host = str_replace("www.", "", $_SERVER['SERVER_NAME']);
+    $host = str_replace("www.", "", $_SERVER["SERVER_NAME"]);
 
     if ($url != null && strpos($url, $host) === false) {
         header("location: " . $url);
